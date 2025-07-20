@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+  /* Exact colors from the React app */
+  --background: 40 15% 97%;
+  --foreground: 30 25% 25%;
+  --card: 40 20% 96%;
+  --border: 35 20% 85%;
+  --primary: 30 35% 35%;
+  --greeting-bg: 40 20% 96%;
+  --greeting-border: 35 15% 80%;
+  --greeting-shadow: 30 20% 70%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: hsl(var(--background));
+  font-family: 'Playfair Display', serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.all {
+  position: relative;
+  max-width: 28rem;
+  margin: 0 auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, hsl(40 25% 98%), hsl(35 20% 94%));
+  border: 1px solid hsl(var(--border) / 0.5);
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 25px -8px hsl(var(--greeting-shadow) / 0.15);
+  color: hsl(var(--foreground));
+  text-align: center;
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.025em;
+  transition: all 0.3s ease;
+}
+
+.all::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 0.75rem;
+  background: linear-gradient(180deg, hsl(40 20% 96%), hsl(35 15% 92%));
+  opacity: 0.3;
+  z-index: 0;
+}
+
+/* Decorative corner ornaments */
+.all::after {
+  content: '';
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-left: 2px solid hsl(var(--border));
+  border-top: 2px solid hsl(var(--border));
+  opacity: 0.4;
+  z-index: 1;
+}
+
+/* Additional corner ornaments using multiple pseudo-elements won't work, 
+   so using box-shadow to create the other corners */
+.all {
+  position: relative;
+}
+
+.all::after {
+  content: '';
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-left: 2px solid hsl(var(--border));
+  border-top: 2px solid hsl(var(--border));
+  opacity: 0.4;
+  box-shadow: 
+    calc(100vw - 1.5rem - 0.75rem) 0 0 -2px transparent,
+    calc(100vw - 1.5rem - 0.75rem) 0 0 0 hsl(var(--border)),
+    0 calc(100vh - 1.5rem - 0.75rem) 0 -2px transparent,
+    0 calc(100vh - 1.5rem - 0.75rem) 0 0 hsl(var(--border)),
+    calc(100vw - 1.5rem - 0.75rem) calc(100vh - 1.5rem - 0.75rem) 0 -2px transparent,
+    calc(100vw - 1.5rem - 0.75rem) calc(100vh - 1.5rem - 0.75rem) 0 0 hsl(var(--border));
+}
+
+/* Text content positioning */
+.all > * {
+  position: relative;
+  z-index: 10;
+}
+
+/* Hover effects */
+.all:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 35px -10px hsl(var(--greeting-shadow) / 0.2);
+}
+
+/* Dark mode */
